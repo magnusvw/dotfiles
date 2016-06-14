@@ -16,6 +16,8 @@ Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'zchee/deoplete-go'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
@@ -49,6 +51,11 @@ let g:ctrlp_cmd = 'CtrlP'
 
 " tagbar
 nmap <C-t> :TagbarToggle<CR>
+
+" snippets
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " nerdtree
 map <C-e> :NERDTreeToggle<CR>
