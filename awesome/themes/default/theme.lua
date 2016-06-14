@@ -50,8 +50,8 @@ theme.border_widget = "#3F3F3F"
 --theme.taglist_bg_focus = "#ff0000"
 
 -- Display the taglist squares
-theme.taglist_squares_sel   = home_path .. '.config/awesome/themes/default/taglist/squarefw.png'
-theme.taglist_squares_unsel = home_path .. '.config/awesome/themes/default/taglist/squarew.png'
+theme.taglist_squares_sel   = home_path .. '.config/awesome/themes/default/taglist/squarefza.png'
+theme.taglist_squares_unsel = home_path .. '.config/awesome/themes/default/taglist/squareza.png'
 
 theme.tasklist_floating_icon = home_path .. '.config/awesome/themes/default/tasklist/floatingw.png'
 

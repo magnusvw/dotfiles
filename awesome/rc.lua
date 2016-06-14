@@ -217,7 +217,7 @@ mytasklist.buttons = awful.util.table.join(
                                                   -- :isvisible() makes no sense
                                                   c.minimized = false
                                                   if not c:isvisible() then
-                                                      awful.tag.viewonly(c:tags()[1])
+                                                     awful.tag.viewonly(c:tags()[1])
                                                   end
                                                   -- This will also un-minimize
                                                   -- the client, if needed
@@ -241,7 +241,6 @@ mytasklist.buttons = awful.util.table.join(
                                               awful.client.focus.byidx(-1)
                                               if client.focus then client.focus:raise() end
                                           end))
-
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
     mypromptbox[s] = awful.widget.prompt()
@@ -254,7 +253,7 @@ for s = 1, screen.count() do
                            awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)))
     -- Create a taglist widget
-    mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
+   	mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
 
     -- Create a tasklist widget
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
