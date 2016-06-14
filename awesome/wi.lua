@@ -145,7 +145,7 @@ memicon = wibox.widget.imagebox()
 memicon:set_image(beautiful.widget_ram)
 --
 mem = wibox.widget.textbox()
-vicious.register(mem, vicious.widgets.mem, "Mem: $1% Use: $2MB Total: $3MB Free: $4MB Swap: $5%", 2)
+vicious.register(mem, vicious.widgets.mem, "Mem: $1% Use: $2MB Total: $3MB Free: $4MB", 2)
 -- End Mem }}}
 --
 -- {{{ Start Gmail 
@@ -165,9 +165,9 @@ vicious.register(mem, vicious.widgets.mem, "Mem: $1% Use: $2MB Total: $3MB Free:
 -- End Gmail }}}
 --
 -- {{{ Start Wifi
-wifiicon = wibox.widget.imagebox()
-wifiicon:set_image(beautiful.widget_wifi)
+--wifiicon = wibox.widget.imagebox()
+--wifiicon:set_image(beautiful.widget_wifi)
 --
-wifi = wibox.widget.textbox()
-vicious.register(wifi, vicious.widgets.wifi, "${ssid} Rate: ${rate}MB/s Link: ${link}%", 3, "wlp3s0")
+--wifi = wibox.widget.textbox()
+--jvicious.register(wifi, vicious.widgets.wifi, "${ssid} Rate: ${rate}MB/s Link: ${link}%", 3, "wlan0")
 -- End Wifi }}}
