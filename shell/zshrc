@@ -5,6 +5,8 @@ plugins=(git go golang)
 
 source $ZSH/oh-my-zsh.sh	
 
+setopt no_share_history
+
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$HOME/.rvm/bin"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
