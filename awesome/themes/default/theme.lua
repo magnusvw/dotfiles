@@ -15,7 +15,7 @@ theme.bg_normal     = "#222222"
 theme.bg_focus      = "#535d6c"
 theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#444444"
-theme.bg_tooltip    = "#d6d6d6"
+theme.bg_tooltip    = "#222222"
 theme.bg_em         = "#5a5a5a"
 theme.bg_systray    = theme.bg_normal
 
@@ -23,7 +23,7 @@ theme.fg_normal     = "#aaaaaa"
 theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
-theme.fg_tooltip    = "#1a1a1a"
+theme.fg_tooltip    = "#aaaaaa"
 theme.fg_em         = "#d6d6d6"
 
 theme.border_width  = "1"
