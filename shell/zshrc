@@ -17,3 +17,6 @@ export EDITOR="nvim"
 
 alias ls="ls --color -F"
 alias vim="nvim"
+
+export NVM_DIR="/home/magnus/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

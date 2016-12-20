@@ -39,8 +39,6 @@ set number
 
 let mapleader = "\<Space>"
 
-colors molokai
-
 " transparens utanför textarea
 hi Normal ctermbg=none
 hi NonText ctermbg=none
@@ -114,3 +112,6 @@ let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 let g:deoplete#enable_at_startup = 1
 let g:python3_host_prog = '/usr/bin/python'
+
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1 
+colors molokai
