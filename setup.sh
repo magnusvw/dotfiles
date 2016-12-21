@@ -6,3 +6,4 @@ ln -sf $PWD/X11/xinitrc ~/.xinitrc
 ln -sf $PWD/shell/oh-my-zsh ~/.oh-my-zsh
 ln -sf $PWD/shell/zshrc ~/.zshrc
 ln -sf $PWD/git/gitconfig ~/.gitconfig
+ln -sf $PWD/debugger/gdbinit ~/.gdbinit
