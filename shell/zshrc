@@ -27,5 +27,16 @@ PERL_LOCAL_LIB_ROOT="/home/magnus/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_
 PERL_MB_OPT="--install_base \"/home/magnus/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/magnus/perl5"; export PERL_MM_OPT;
 
-GOPATH="/home/magnus/.gvm/pkgsets/go1.7/global:/home/magnus/projekt/go"
+GOPATH="/home/magnus/.gvm/pkgsets/go1.9/global:/home/magnus/projekt/go"
 
+man() {
+    env \
+    LESS_TERMCAP_mb="$(printf "\e[1;31m")" \
+    LESS_TERMCAP_md="$(printf "\e[1;31m")" \
+    LESS_TERMCAP_me="$(printf "\e[0m")" \
+    LESS_TERMCAP_se="$(printf "\e[0m")" \
+    LESS_TERMCAP_so="$(printf "\e[1;44;33m")" \
+    LESS_TERMCAP_ue="$(printf "\e[0m")" \
+    LESS_TERMCAP_us="$(printf "\e[1;32m")" \
+    man "${@}"
+}

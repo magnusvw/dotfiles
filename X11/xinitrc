@@ -31,3 +31,4 @@ fi
 setxkbmap se
 
 exec awesome
+#exec bspwm
