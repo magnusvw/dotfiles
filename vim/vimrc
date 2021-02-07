@@ -114,4 +114,7 @@ let g:deoplete#enable_at_startup = 1
 let g:python3_host_prog = '/usr/bin/python'
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1 
+
+set number
+
 colors molokai

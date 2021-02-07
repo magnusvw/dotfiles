@@ -16,9 +16,8 @@ beautiful.init( awful.util.getdir("config") .. "/themes/default/theme.lua" )
 local naughty = require("naughty")
 local menubar = require("menubar")
 --FreeDesktop
-require('freedesktop.utils')
-require('freedesktop.menu')
-freedesktop.utils.icon_theme = 'gnome'
+local freedesktop = require('freedesktop')
+
 --Vicious + Widgets 
 vicious = require("vicious")
 local wi = require("wi")
@@ -106,27 +105,27 @@ end
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
- names  = { 
-         '☭:dev',
-         '⚡:chat', 
-         '♨:web', 
-         '☠:term 1',  
-         '☃:term 2', 
-         '⌥:term 3', 
+ names  = {
+         '♨:web',  
+         '☭:term 1',
+         '⚡:term 2', 
+         '☠:term 3',  
+         '☃:term 4', 
+         '⌥:term 5', 
          '⌘:full 1',
          '✇:full 2',
          '✣:full 3',
            },
  layout = {
-      layouts[2],  -- 1:dev
-      layouts[2],  -- 2:chat
-      layouts[10],  -- 3:web
-      layouts[2],  -- 4:term 1
-      layouts[2],  -- 5:term 2
-      layouts[2],  -- 6:multimedia
-      layouts[10],  -- 7:conky
-      layouts[10],   -- 8:ide
-      layouts[10],  -- 9:facepalm
+      layouts[10],  -- 1:web
+      layouts[2],  -- 2:term 1
+      layouts[2],  -- 3:term 2
+      layouts[2],  -- 4:term 3
+      layouts[2],  -- 5:term 4
+      layouts[2],  -- 6:term 5
+      layouts[10],  -- 7:full 1
+      layouts[10],   -- 8:full 2
+      layouts[10],  -- 9:full 3
           }
        }
   for s = 1, screen.count() do
@@ -169,18 +168,23 @@ vicious.register(batt, vicious.widgets.bat, "Batt: $2% Rem: $3", 61, "BAT0")
 -- {{{ Menu
 -- Create a laucher widget and a main menu
 
-menu_items = freedesktop.menu.new()
 myawesomemenu = {
-   { "manual", terminal .. " -e man awesome", freedesktop.utils.lookup_icon({ icon = 'help' }) },
-   { "edit config", editor_cmd .. " " .. awesome.conffile, freedesktop.utils.lookup_icon({ icon = 'package_settings' }) },
-   { "restart", awesome.restart, freedesktop.utils.lookup_icon({ icon = 'system-shutdown' }) },
-   { "quit", awesome.quit, freedesktop.utils.lookup_icon({ icon = 'system-shutdown' }) }
-       }
-
-        table.insert(menu_items, { "Awesome", myawesomemenu, beautiful.awesome_icon })
-        table.insert(menu_items, { "Wallpaper", wallmenu, freedesktop.utils.lookup_icon({ icon = 'gnome-settings-background' })}) 
-
-        mymainmenu = awful.menu({ items = menu_items, width = 150 })
+    { "hotkeys", function() return false, hotkeys_popup.show_help end },
+    { "manual", terminal .. " -e man awesome" },
+    { "edit config", string.format("%s -e %s %s", terminal, editor, awesome.conffile) },
+    { "restart", awesome.restart },
+    { "quit", function() awesome.quit() end }
+}
+mymainmenu = freedesktop.menu.build({
+    before = {
+        { "Awesome", myawesomemenu, beautiful.awesome_icon },
+        -- other triads can be put here
+    },
+    after = {
+        { "Open terminal", terminal },
+        -- other triads can be put here
+    }
+})
 
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                      menu = mymainmenu })
@@ -305,7 +309,7 @@ for s = 1, screen.count() do
     bottom_layout:add(memicon)
     bottom_layout:add(mem)
     bottom_layout:add(spacer)
-    bottom_layout:add(weather)
+    bottom_layout:add(batt)
  --   bottom_layout:add(spacer)
 
  -- Now bring it all together 
@@ -473,6 +477,13 @@ clientbuttons = awful.util.table.join(
 root.keys(globalkeys)
 -- }}}
 
+function toggle_fullscreen(c)
+    c.fullscreen = not c.fullscreen
+    --TODO store the existing ontop state
+    c.ontop      = c.fullscreen
+    c:raise()
+end
+
 -- {{{ Rules
 awful.rules.rules = {
     -- All clients will match this rule.
@@ -485,22 +496,15 @@ awful.rules.rules = {
                      buttons = clientbuttons } },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
+    { rule = { class = "VirtualBox"},
+      properties = { fullscreen = true, placement = awful.placement.no_overlap+awful.placement.no_offscreen } },
+    { rule = { instance = "VirtualBox Machine"},
+      properties = { fullscreen = true, placement = awful.placement.no_overlap+awful.placement.no_offscreen },
+      callback = toggle_fullscreen },
     { rule = { class = "pinentry" },
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
-    { rule = { class = "Chromium" },
-      properties = { tag = tags[1][3] } },
-    { rule = { class = "Vlc" },
-      properties = { tag = tags[1][6] } },
-    { rule = { class = "VirtualBox" },
-      properties = { tag = tags[1][5] } },
-    { rule = { class = "Gns3" },
-      properties = { tag = tags[1][5] } },
-    { rule = { class = "Bitcoin-qt" },
-      properties = { tag = tags[1][9] } },
-    { rule = { class = "luakit" },
-      properties = { tag = tags[1][2] } },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
