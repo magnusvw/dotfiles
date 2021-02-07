@@ -39,6 +39,9 @@ theme.fg_end_widget = "#1a1a1a"
 theme.bg_widget = "#2a2a2a"
 theme.border_widget = "#3F3F3F"
 
+theme.useless_gap = 5
+theme.gap_single_client = false
+
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:

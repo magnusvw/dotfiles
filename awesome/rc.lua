@@ -22,6 +22,10 @@ local freedesktop = require('freedesktop')
 vicious = require("vicious")
 local wi = require("wi")
 
+local hotkeys_popup = require("awful.hotkeys_popup")
+
+local nordvpn = require("widgets.nordvpn")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -197,7 +201,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
 
--- Create a wibox for each screen and add it
+-- Create a wibox for each screen and add itcyberpunk wallpaper
 mywibox = {}
 myinfowibox = {}
 mypromptbox = {}
@@ -310,13 +314,19 @@ for s = 1, screen.count() do
     bottom_layout:add(mem)
     bottom_layout:add(spacer)
     bottom_layout:add(batt)
- --   bottom_layout:add(spacer)
+
+    local bottom_right_layout = wibox.layout.fixed.horizontal()
+    bottom_right_layout:add(nordvpn)
+
+    local bottom_full_layout = wibox.layout.align.horizontal()
+    bottom_full_layout:set_left(bottom_layout)
+    bottom_full_layout:set_right(bottom_right_layout)
 
  -- Now bring it all together 
     --local layout = wibox.layout.align.horizontal()
     --layout:set_bottom(bottom_layout)
 
-    myinfowibox[s]:set_widget(bottom_layout)
+    myinfowibox[s]:set_widget(bottom_full_layout)
 
 end
 -- }}}
