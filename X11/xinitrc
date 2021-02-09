@@ -30,5 +30,5 @@ fi
 setxkbmap se
 xbindkeys
 
+picom -b
 exec awesome
-#exec bspwm

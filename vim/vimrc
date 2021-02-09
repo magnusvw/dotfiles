@@ -7,15 +7,16 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Bundle 'Blackrush/vim-gocode'
-
 Plugin 'fatih/vim-go'
+
+Plugin 'rust-lang/rust.vim'
+Plugin 'racer-rust/vim-racer'
+
 Plugin 'flazz/vim-colorschemes'
 Plugin 'tpope/vim-surround'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'zchee/deoplete-go'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'vim-airline/vim-airline'
@@ -37,7 +38,13 @@ set smarttab
 set nocursorline
 set number
 
+let asmsyntax="nasm"
 let mapleader = "\<Space>"
+
+" rust racer
+set hidden
+let g:racer_cmd = "/home/magnus/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
 
 " transparens utanför textarea
 hi Normal ctermbg=none
@@ -116,5 +123,3 @@ let g:python3_host_prog = '/usr/bin/python'
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1 
 
 set number
-
-colors molokai

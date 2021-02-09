@@ -18,13 +18,24 @@ local menubar = require("menubar")
 --FreeDesktop
 local freedesktop = require('freedesktop')
 
---Vicious + Widgets 
+--Vicious + Widgets
 vicious = require("vicious")
 local wi = require("wi")
 
 local hotkeys_popup = require("awful.hotkeys_popup")
 
+-- nordvpn
 local nordvpn = require("widgets.nordvpn")
+
+-- redshift
+local redshift = require("redshift")
+
+-- set binary path (optional)
+redshift.redshift = "/usr/bin/redshift"
+-- set additional redshift arguments (optional)
+redshift.options = "-c ~/.config/redshift.conf"
+-- 1 for dim, 0 for not dimmed
+redshift.init(1)
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -52,7 +63,7 @@ end
 -- }}}
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
+terminal = "alacritty"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -110,12 +121,12 @@ end
 -- Define a tag table which hold all screen tags.
 tags = {
  names  = {
-         '♨:web',  
+         '♨:web',
          '☭:term 1',
-         '⚡:term 2', 
-         '☠:term 3',  
-         '☃:term 4', 
-         '⌥:term 5', 
+         '⚡:term 2',
+         '☠:term 3',
+         '☃:term 4',
+         '⌥:term 5',
          '⌘:full 1',
          '✇:full 2',
          '✣:full 3',
@@ -138,7 +149,7 @@ tags = {
  end
 -- }}}
 
--- Wallpaper Changer Based On 
+-- Wallpaper Changer Based On
 -- menu icon menu pdq 07-02-2012
  local wallmenu = {}
  local function wall_load(wall)
@@ -155,7 +166,7 @@ local item = { l, function () wall_load(l) end }
  end
  wall_menu()
 
--- Widgets 
+-- Widgets
 
 spacer       = wibox.widget.textbox()
 spacer:set_text(' | ')
@@ -302,7 +313,7 @@ for s = 1, screen.count() do
     layout:set_right(right_layout)
 
    mywibox[s]:set_widget(layout)
-   
+
    -- Create the bottom wibox
      myinfowibox[s] = awful.wibox({ position = "bottom", screen = s })
    -- Widgets that are aligned to the bottom
@@ -322,7 +333,7 @@ for s = 1, screen.count() do
     bottom_full_layout:set_left(bottom_layout)
     bottom_full_layout:set_right(bottom_right_layout)
 
- -- Now bring it all together 
+ -- Now bring it all together
     --local layout = wibox.layout.align.horizontal()
     --layout:set_bottom(bottom_layout)
 
@@ -344,7 +355,6 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
-
     awful.key({ modkey,           }, "j",
         function ()
             awful.client.focus.byidx( 1)
@@ -355,7 +365,7 @@ globalkeys = awful.util.table.join(
             awful.client.focus.byidx(-1)
             if client.focus then client.focus:raise() end
         end),
-    awful.key({ }, "Print", function () awful.util.spawn("upload_screens scr") end),
+    awful.key({ }, "Print", function () awful.util.spawn("scrot") end),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
