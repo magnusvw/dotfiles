@@ -10,3 +10,6 @@ ln -sf $PWD/shell/zshrc ~/.zshrc
 ln -sf $PWD/git/gitconfig ~/.gitconfig
 ln -sf $PWD/debugger/gdbinit ~/.gdbinit
 ln -sf $PWD/redshift.conf ~/.config/redshift.conf
+ln -sf $PWD/tmux.conf ~/.tmux.conf
+ln -sf $PWD/waybar ~/.config/waybar
+ln -sf $PWD/sway ~/.config/sway

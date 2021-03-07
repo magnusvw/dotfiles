@@ -5,7 +5,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-
 Bundle 'Blackrush/vim-gocode'
 Plugin 'fatih/vim-go'
 
@@ -25,6 +24,10 @@ Plugin 'vim-airline/vim-airline-themes'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" color scheme
+colorscheme jellybeans
+hi Normal guibg=NONE ctermbg=NONE
+
 syntax on
 
 set encoding=utf-8
@@ -33,13 +36,17 @@ set backspace=indent,eol,start
 set mouse=a
 set ts=2
 set sw=2
-set softtabstop=0 noexpandtab
+set softtabstop=0 expandtab
 set smarttab
 set nocursorline
 set number
 
 let asmsyntax="nasm"
 let mapleader = "\<Space>"
+
+" ctrlp
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 " rust racer
 set hidden
