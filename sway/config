@@ -12,6 +12,18 @@
 # Run services
 #########################
 exec mako
+exec gammastep-indicator
+exec python ~/.config/sway/scripts/inactive-windows-transparency.py -o 0.92
+
+# gtk look
+set $gnome-schema org.gnome.desktop.interface
+
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Adwaita-dark'
+    gsettings set $gnome-schema icon-theme 'HighContrast'
+    gsettings set $gnome-schema cursor-theme 'Adwaita'
+    gsettings set $gnome-schema font-name 'Cantarell 12'
+}
 
 #########################
 # Main definitions
@@ -33,7 +45,7 @@ default_border none
 
 # Stablish gaps between windows and from the screen edge
 smart_gaps on
-gaps inner 8
+gaps inner 4
 
 bar {
 	swaybar_command waybar

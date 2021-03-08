@@ -1,0 +1,11 @@
+max-visible=5
+sort=-time
+layer=overlay
+anchor=top-right
+font='Inconsolata'
+background-color=#1d1f21
+text-color=#c5c8c6
+border-size=0
+border-radius=0
+default-timeout=7000
+width=380

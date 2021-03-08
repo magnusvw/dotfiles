@@ -13,3 +13,5 @@ ln -sf $PWD/redshift.conf ~/.config/redshift.conf
 ln -sf $PWD/tmux.conf ~/.tmux.conf
 ln -sf $PWD/waybar ~/.config/waybar
 ln -sf $PWD/sway ~/.config/sway
+ln -sf $PWD/mako ~/.config/mako
+ln -sf $PWD/gammastep ~/.config/gammastep

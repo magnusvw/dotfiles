@@ -11,12 +11,13 @@ input type:keyboard {
 # Provide all touchpads and mice the same configuration
 input type:pointer {
     natural_scroll disabled
-    middle_emulation enabled
+    middle_emulation disabled
+    scroll_method on_button_down
 }
 
 input type:touchpad {
     tap enabled
     dwt enabled
     natural_scroll disabled
-    middle_emulation enabled
+    middle_emulation disabled
 }
